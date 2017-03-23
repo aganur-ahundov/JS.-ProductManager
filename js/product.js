@@ -7,33 +7,6 @@ function StandartProduct() {
     this.photo;
     this.price;
     this.quantity;
-
-    // this.InitProduct = function(_title, _photo )
-    // {
-    //     this.setTitle( _title );
-    //     this.photo = _photo;
-    // }
-    //
-    // this.setPrice = function( _price ){
-    //     if(_price > 0)
-    //     {
-    //         this.price = _price;
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         console.log("Цена должна быть положительной");
-    //         return false;
-    //     }
-    // }
-    //
-    // this.setTitle = function( _title )
-    // {
-    //     if(_title != "")
-    //         this.title = _title;
-    //     else
-    //         console.log("Пустое название объекта!");
-    // }
 }
 
 function ExclusiveProduct() {
@@ -114,7 +87,7 @@ StandartProduct.prototype.getQuantity = function () {
 }
 
 StandartProduct.prototype.getTotalSum = function () {
-    return this.price * this.quantity;
+    return (this.getPrice() * this.getQuantity());
 }
 /////////////////////////////////////////////////////////////////
 

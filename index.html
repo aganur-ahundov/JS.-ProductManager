@@ -6,60 +6,90 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div class="order-info">
-	<label>Order Info: </label>
-    <label class="label-date"></label>
-    <label class="label-phone"></label>
-    <label class="label-name" for="change-orderName"></label>
-    <button id="changeOrderInfo">Change</button>
+<div class="wrapper">
+	<div class="order-info">
+		<label>Order Info: </label>
+	    <label class="label-date"></label>
+	    <label class="label-phone"></label>
+	    <label class="label-name" for="change-orderName"></label>
+	    <button id="changeOrderInfo">Change</button>
 
-    <div class="changeOrderField">
-    	<input type="text" name="changeOrderDate" placeholder="Date: dd.mm.yyyy">
-    	<input type="text" name="changeOrderNumber" placeholder="Number (to 14 digits)" >
-    	<input type="text" name="changeOrderName" placeholder="Name">
-    	<button id="submitOrderChanges">Submit</button>
-    	<button id="cancelOrderChanges">Cancel</button>
-    </div>
-</div>
+	    <div class="changeOrderField">
+	    	<input type="text" name="changeOrderDate" placeholder="Date: dd.mm.yyyy">
+	    	<input type="text" name="changeOrderNumber" 
+	    			placeholder="Number +XXXXXXXXXX" >
+	    	<input type="text" name="changeOrderName" placeholder="Name">
+	    	<button id="submitOrderChanges">Submit</button>
+	    	<button id="cancelOrderChanges">Cancel</button>
+	    </div>
+	</div>
 
-<div class="orderLine">
-	<div class='exmpl-line'>
-		<label class="product-exclusive"></label>
-		<label class="product-name"></label>
-		<label class="product-material"></label>
-		<label class="product-diameter"></label>
-		<label class="product-envirt"></label>
-		<label class="product-price"></label>
-		<label class="product-quantity"></label>
-		<label class="product-totalSum"></label>
-		<button class="delete-button" type="button" onClick="deleteProduct(this);">Delete</button>
-		<button class="change-button" type="button" onClick="changeProductInfo(this)">Change</button>
+	<div class="orderLine">
+		<div class='exmpl-line'>
+			<label class="product-exclusive"></label>
+			<label class="product-name"></label>
+			<label class="product-material"></label>
+			<label class="product-diameter"></label>
+			<label class="product-envirt"></label>
+			<label class="product-price"></label>
+			<label class="product-quantity"></label>
+			<label class="product-totalSum"></label>
+			<!-- <img class="product-img"> -->
+			<button class="delete-button" type="button" onClick="deleteProduct(this);">Delete</button>
+			<button class="change-button" type="button" onClick="changeProductInfo(this)">Change</button>
+			<label class="totalSumNumber"></label>
+		</div>
+	</div>
+	<div class=addButton><button id="addNewProduct">Add product</button></div>
+	<div class="modal-bg">
+		<div id="modal" class="modal-window">
+			<form>
+				<h3>Fill the form</h3>
+				<label>
+					<input type="checkbox" name="isExclusive">
+					<span>Exclusive</span>
+				</label>
+				<input type="text" name="form-name" placeholder="Name" required>
+				<input type="text" name="form-envirt" placeholder="Work Environment">
+				<input type="text" name="form-diameter" placeholder="Diameter">
+				<input type="text" name="form-material" placeholder="Material">
+				<input type="text" name="form-price" placeholder="Price" required>
+				<input type="text" name="form-quantity" placeholder="Quantity" required>
+				<input type="file" id="input-file" name="form-img" multiple accept="image/*,image/jpeg">
+				<button id="submitFormChanges" type="button">Submit</button>
+	    		<button id="cancelFormChanges" type="button">Cancel</button>
+			</form>
+		</div>
 	</div>
 </div>
-<div class=addButton><button id="addNewProduct">Add product</button></div>
-<div class="modal-bg">
-	<div id="modal" class="modal-window">
-		<form>
-			<h3>Fill the form</h3>
-			<label>
-				<input type="checkbox" name="isExclusive">
-				<span>Exclusive</span>
-			</label>
-			<input type="text" name="form-name" placeholder="Name" required>
-			<input type="text" name="form-envirt" placeholder="Work Environment">
-			<input type="text" name="form-diameter" placeholder="Diameter">
-			<input type="text" name="form-material" placeholder="Material">
-			<input type="text" name="form-price" placeholder="Price" required>
-			<input type="text" name="form-quantity" placeholder="Quantity" required>
-			<input type="file" id="input-file" name="form-img" multiple accept="image/*,image/jpeg">
-			<button id="submitFormChanges" type="button">Submit</button>
-    		<button id="cancelFormChanges" type="button">Cancel</button>
-		</form>
+<footer>
+	<label>Delivery Info:</label>
+	<label class="delivery-phone"></label>
+	<label class="delivery-date"></label>
+	<label class="delivery-provider"></label>
+	<label class="delivery-city"></label>
+	<button name="changeDeliveryInfoButton">Change</button>
+
+	<label class="totalSum">Total: 0</label>
+
+	<div class="changeDeliveryInfoDiv">
+		<input type="text" name="delivery-changePhone" placeholder="Number +XXXXXXXXXX">
+		<input type="text" name="delivery-changeDate" placeholder="Date: dd.mm.yyyy">
+		<input type="text" name="delivery-changeProvider" placeholder="Provider">
+		<input type="text" name="delivery-changeCity" placeholder="City">
+		<button name="submitDeliveryChanges">Submit</button>
+		<button name="cancelDeliveryChanges">Cancel</button>
 	</div>
-</div>
+
+	
+</footer>
 <script src="js/order.js"></script>
-<script src="js/product.js"></script>
-<script src="js/OrderInfoScript.js"></script>
-<script src="js/script.js"></script>
+	<script src="js/product.js"></script>
+	<script src="js/delivery.js"></script>
+	<script src="js/deliveryInfoScript.js"></script>
+	<script src="js/OrderInfoScript.js"></script>
+	<script src="js/productManagerBlock.js"></script>
+	<script src="js/script.js"></script>
 </body>
+
 </html>

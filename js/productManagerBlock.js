@@ -2,7 +2,8 @@
  * Created by Aganurych on 21.03.2017.
  */
 
-var changeProduct = null; //????????
+var changeProduct = null;
+var totalSum = 0;
 
 
 //инициализируем "блок покупателя"
@@ -51,7 +52,6 @@ function addNewProduct() {
     //берем готовый пример формы, меняем название класса и делаем видимым
     var newLine = document.querySelector('.exmpl-line').cloneNode(true);
     newLine.className = 'line';
-    newLine.style.display = 'inline-block';
 
 
     //Выбор тип продукта
@@ -88,17 +88,38 @@ function addNewProduct() {
 
     }
 
-    if(changeProduct != null)
+    var input = document.querySelector('#input-file');
+    var image = document.createElement('img');//newLine.querySelector('img');
+    image.className = "product-img-res";
+
+    if (input.files && input.files[0]) {
+
+        newLine.insertBefore(image, newLine.getElementsByTagName('button')[0]);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+
+            var image = newLine.querySelector('.product-img-res');
+            image.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    if(changeProduct != null) //если мы изменяем уже существующий продукт
     {
+        totalSum -= changeProduct.querySelector('.totalSumNumber');
+
         document.querySelector('.orderLine').insertBefore(newLine, changeProduct.parentNode.nextSibling);
         deleteProduct(changeProduct);
         changeProduct = null;
     }
-    else {
+    else { //если создаем новый
         document.querySelector('.orderLine').appendChild(newLine); //добавляем продукт на страницу
+
     }
 
+        totalSum += newProduct.getTotalSum();
         HideAddNewProductForm(); //прячем форму
+        document.querySelector('.totalSum').textContent = 'Total: ' + totalSum;
 }
 
 //Проверяем и заполняем обязательные поля товара (имя, цена, количество)
@@ -125,13 +146,18 @@ function fillRequiredFields( _form, _title, _price, _quantity, _sum) {
     _form.querySelector('.product-price').innerHTML = 'Price: ' + _price;
     _form.querySelector('.product-quantity').innerHTML = 'Quantity: ' + _quantity;
     _form.querySelector('.product-totalSum').innerHTML = 'Total: ' + _sum;
+
+    //будет удобно вычитать общую сумму за товар из общей суммы за покупку
+    _form.querySelector('.totalSumNumber').textContent = _sum;
+    _form.querySelector('.totalSumNumber').style.display = 'none';
 }
 
 //удаляем продукт
 function deleteProduct( event ) {
-    console.log(event);
-    console.log(event.parentNode);
-     document.querySelector('.orderLine').removeChild( event.parentNode );
+    console.log(event.parentNode.querySelector('.totalSumNumber'));
+    totalSum -= event.parentNode.querySelector('.totalSumNumber').innerHTML;
+    document.querySelector('.orderLine').removeChild( event.parentNode );
+    document.querySelector('.totalSum').textContent = 'Total: ' + totalSum;
 }
 
 //чистим форму от старых данных
@@ -156,7 +182,3 @@ function changeProductInfo( event ) {
     changeProduct = event;
     createProductShowForm();
 }
-
-//MAIN PROGRAM
-initOrderInfo();
-initOrderLine();
