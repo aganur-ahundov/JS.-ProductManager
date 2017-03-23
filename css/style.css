@@ -1,0 +1,80 @@
+body{
+	margin:0;
+	font-family: cursive;
+	background-color: #018D8E;
+}
+
+body button{
+	padding: 10px;
+	margin: 5px;
+	border: 2px solid black;
+	border-radius: 5px;
+	font-size: 13px;
+}
+
+.order-info{
+	/*display: block;*/
+	padding: 4px 0px 0px 23px;
+	border-bottom: 2px solid black;
+	background-color: #008A4E;
+}
+
+.order-info label{
+	margin-right 6px;
+}
+
+.modal-bg {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	left: 0;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: none;
+}
+.modal-window {
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	/*//width: 200px;*/
+	margin: 15px 0 0 -115px;
+	/*//background: #fff;*/
+	padding: 15px;
+	text-align: center;
+    width: 16%;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #008A4E;
+}
+
+.modal-window input{
+	padding: 7px;
+	margin: 5px auto;
+	border: 2px solid black;
+    border-radius: 5px;
+}
+
+#input-file{
+	border: none;
+}
+
+.line{
+	margin: 10px;
+	padding: 5px;
+	display: inline-block;
+	border: 2px solid black;
+	border-radius: 7px;
+    height: 265px;
+    width: 230px;
+    vertical-align: top;
+	background-color: white;
+}
+
+.line label{
+	display: block;
+	padding: 2px 0;
+}
+
+.addButton{
+	text-align: center;
+}
